@@ -21,7 +21,7 @@ def display_results(data):
             # Füge hier den Schlüssel 'sammel_id' ein
             df_data.append({
                 "Gebietsbezeichnung": fields.get("gebietsbezeichnung", "Nicht verfügbar"),
-                "Sammelart": fields.get("sammel_id", "Nicht verfügbar"),
+                "Sammelart": fields.get("sammlung_id", "Nicht verfügbar"),
                 "Datum": fields.get("datum", "Nicht verfügbar"),
                 "Startzeitpunkt": fields.get("startzeitpunkt", "Nicht verfügbar")
             })
