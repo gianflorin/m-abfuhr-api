@@ -13,13 +13,16 @@ def fetch_data_for_street(street_name):
 
 def display_results(data):
     if "records" in data:
+        # Für Debugging-Zwecke, entferne oder kommentiere diese Zeile aus, wenn das Debugging abgeschlossen ist
+        st.write(data)
+        
         # Erstelle eine Tabelle mit den Spaltennamen
         df_data = []
         for record in data["records"]:
             fields = record["fields"]
             df_data.append({
                 "Gebietsbezeichnung": fields.get("gebietsbezeichnung", "Nicht verfügbar"),
-                "Sammelart": fields.get("sammel_id", "Nicht verfügbar"),  # Name des Schlüssels für "Sammelart"
+                "Sammelart": fields.get("sammel_id", "Nicht verfügbar"),  # Überprüfe und aktualisiere den Schlüssel nach Sichtung der Daten
                 "Datum": fields.get("datum", "Nicht verfügbar"),
                 "Startzeitpunkt": fields.get("startzeitpunkt", "Nicht verfügbar")
             })
@@ -43,7 +46,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
 
