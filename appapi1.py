@@ -33,7 +33,7 @@ def display_results(data):
         st.error("Keine Daten für diese Straße gefunden.")
 
 def main():
-    st.title("Müllabfuhr-Informationen")
+    st.title("Müllabfuhr-Daten Stadt St.Gallen")
     street = st.text_input("Gib deine Straße ein", "")
     if st.button("Informationen suchen"):
         if not street:
