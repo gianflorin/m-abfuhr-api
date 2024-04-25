@@ -18,7 +18,7 @@ def display_results(data):
         df_data = []
         for record in data["records"]:
             fields = record["fields"]
-            # Sammelart mit Hilfe der 'sammelung_id' hinzufügen
+            # Sammelart mit Hilfe der 'sammlung_id' hinzufügen
             df_data.append({
                 "Gebietsbezeichnung": fields.get("gebietsbezeichnung", "Nicht verfügbar"),
                 "Sammelart": fields.get("sammlung_id", "Nicht verfügbar"),
