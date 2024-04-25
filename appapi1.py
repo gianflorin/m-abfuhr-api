@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 import pandas as pd
-
+# Daten anhand des Strassennamens von der API abrufen
 def fetch_data_for_street(street_name):
     encoded_street_name = requests.utils.quote(street_name)
     api_url = f"https://daten.stadt.sg.ch/api/records/1.0/search/?dataset=abfuhrdaten-stadt-stgallen&q={encoded_street_name}&rows=20"
@@ -11,7 +11,7 @@ def fetch_data_for_street(street_name):
     else:
         st.error(f"API-Antwort: {response.status_code}, Inhalt: {response.text}")
         return None
-
+# Outputs anzeigen
 def display_results(data):
     if "records" in data:
         # Liste für die Tabelle Erstellen
@@ -25,21 +25,21 @@ def display_results(data):
                 "Datum": fields.get("datum", "Nicht verfügbar"),
                 "Startzeitpunkt": fields.get("startzeitpunkt", "Nicht verfügbar")
             })
-        # Liste in ein DataFrame konvertieren
+        # Liste in ein Data Frame konvertieren, da einfacher zu handhaben
         df = pd.DataFrame(df_data)
-        # DataFrame als Tabelle anzeigen
+        # Data Frame als Tabelle anzeigen
         st.table(df)
     else:
         st.error("Keine Daten für diese Straße gefunden.")
 
-def main():
-    st.title("Müllabfuhr-Daten Stadt St.Gallen")
-    street = st.text_input("Gib deine Straße ein", "")
-    if st.button("Informationen suchen"):
+def main(): # Um Benutzer-Inputs zu sammeln
+    st.title("Müllabfuhr-Daten Stadt St.Gallen") # Titel auf der Seite
+    street = st.text_input("Gib deine Straße ein", "") # Suchfeld
+    if st.button("Informationen suchen"): # Suche per Klick auf button ausführen
         if not street:
             st.error("Bitte gib eine Straße ein.")
         else:
-            data = fetch_data_for_street(street)
+            data = fetch_data_for_street(street) # Zurückgreifen auf API-Daten, siehe oben
             if data:
                 display_results(data)
             else:
