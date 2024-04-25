@@ -34,10 +34,10 @@ def display_results(data):
 
 def main(): # Um Benutzer-Inputs zu sammeln
     st.title("Müllabfuhr-Daten Stadt St.Gallen") # Titel auf der Seite
-    street = st.text_input("Gib deine Straße ein", "") # Suchfeld
+    street = st.text_input("Gib deine Strasse ein", "") # Suchfeld
     if st.button("Informationen suchen"): # Suche per Klick auf button ausführen
         if not street:
-            st.error("Bitte gib eine Straße ein.")
+            st.error("Bitte gib eine Strasse ein.")
         else:
             data = fetch_data_for_street(street) # Zurückgreifen auf API-Daten, siehe oben
             if data:
