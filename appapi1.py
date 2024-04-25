@@ -14,7 +14,7 @@ def fetch_data_for_street(street_name):
 
 def display_results(data):
     if "records" in data:
-        # Erstelle eine Liste für die Tabelle
+        # Liste für die Tabelle Erstellen
         df_data = []
         for record in data["records"]:
             fields = record["fields"]
@@ -25,9 +25,9 @@ def display_results(data):
                 "Datum": fields.get("datum", "Nicht verfügbar"),
                 "Startzeitpunkt": fields.get("startzeitpunkt", "Nicht verfügbar")
             })
-        # Konvertiere die Liste in ein DataFrame
+        # Liste in ein DataFrame konvertieren
         df = pd.DataFrame(df_data)
-        # Zeige den DataFrame als Tabelle an
+        # DataFrame als Tabelle anzeigen
         st.table(df)
     else:
         st.error("Keine Daten für diese Straße gefunden.")
